@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="jquery-1.10.2.js"></script>
+	<style>
+		*{margin:0;padding:0}
+        body{background-color:#e6e6fa;font-family:"microsoft yahei"}
+        body,html{color:#333;font-size:14px}
+        .content{width:370px;height:278px;position:relative}
+        .inputText{width:370px;height:278px;position:absolute;padding-left:20px}
+        .title{font-size:20px;text-align:center;color:#00f;padding:20px 0}
+        input{padding:5px;text-decoration:none;margin:10px 0}
+        .inputs{display:block;margin-top:10px}
+        #submit{text-align:center;color:#fff;background-color:#428bca;width:200px;height:30px;border-radius:10px;line-height:30px;display:block;margin-top:30px}
+        .hide{display:none}
+        #imgs{position:absolute;top:0;width:370px;height:278px}
+        #canvas{z-index:2;position:absolute}
+	</style>
+	<script>
+		$(function(){
+$("#submit").click(function(){
+var name = $("#name").val();
+var guoji = $("#guoji").val();
+var types = $("#type").val();
+var number = $("#number").val();
+var date = $("#date").val();
+var youxiao = $("#youxiao").val();
+if(name == "" || guoji == "" || types == "" || number =="" || date == "" || youxiao == ""){
+alert("请输入信息");
+}else{
+drawImage(name,guoji,types,number,date,youxiao);
+}
+});
+});
+//num1..num6为6个input框val值
+function drawImage(num1,num2,num3,num4,num5,num6){
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+ctx.font = "microsoft yahei";
+var img = document.getElementById("imgs");
+ctx.drawImage(img,0,0,370,278);
+ctx.fillText(num1, 105,140);
+ctx.fillText(num2, 180,140);
+ctx.fillText(num3, 128,164);
+ctx.fillText(num4, 128,190);
+ctx.fillText(num5, 128,215);
+ctx.fillText(num6, 213,215); 
+var downloadImg = canvas.toDataURL("image/png"); 
+var w = window.open("about:blank","image from canvas");
+w.document.write('<img src='+ downloadImg +' alt="from canvas">');
+$(".inputText").remove();
+$("img,#showImg").removeClass("hide");
+}
+	</script>
+</head>
+<body>
+	<div class="content"> 
+		<div class="inputText">
+			<div class="mesg">
+				<p class="title">无人驾驶证</p>
+				<div class="inputs">姓名：<input id="name" type="text" placeholder="姓名"></div>
+				<div class="inputs">国籍：<input id="guoji" type="text" placeholder="国籍"></div>
+				<div class="inputs">驾驶类型：<input id="type" type="text" placeholder="驾驶类型"></div>
+				<div class="inputs">合格证编号：<input id="number" type="text" placeholder="合格证编号"></div>
+				<div class="inputs">签发日期：<input id="date" type="text" placeholder="签发日期"></div>
+				<div class="inputs">有效期限：<input id="youxiao" type="text" placeholder="有效期限"></div>
+			</div>
+			<a id="submit" href="#showImg">提交</a>
+		</div>
+			<img id="imgs" src="1.jpg" class="hide" width="370" height="278">
+		<div id="showImg" class="hide">
+			<canvas width="370" height="278" id="canvas"></canvas>
+		</div>
+	</div>
+</body>
+</html>

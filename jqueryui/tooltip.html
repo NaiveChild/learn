@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>工具提示框</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		#resizable{
+			width: 200px;
+			height: 200px;
+			border:1px solid #eee;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<label for="age">your age:</label>
+	<input type="text" name="" id="age" title="年龄仅用于统计">
+
+
+
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			$(document).tooltip();
+			
+		});
+
+	</script>
+</body>
+</html>

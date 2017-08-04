@@ -1,0 +1,105 @@
+﻿<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+<script src="js/jquery.js"></script>
+
+</head>
+<body>
+<img id="starImg">
+<canvas id="userImg"></canvas>
+<canvas id="main" width="400" height="400" style="border:1px solid #d3d3d3;" ></canvas>
+<select id="starSelect" onchange="hechen()">
+	<option value="img/star1.jpg" selected="selected">明星1</option>
+	<option value="img/star2.jpg">明星2</option>
+	<option value="img/star3.jpg">明星3</option>
+</select>
+<!-- 隐藏文件对话框为了界面好看点 -->
+<input type="file" style="display:none" id="userFile" onchange="changeFile(this)">
+<input type="button" id="userBtn" value="上传图片">
+
+<input type="text" id="desc" onBlur="hechen()" value="测试文本"/>
+</body>
+	<script>
+	var userImgFile;
+	$(function(){
+	/**
+		var a_canvas = getCanvasContext('main');
+		var tScale  = window.devicePixelRatio;
+	    var tWidth  = 400;
+	    var tHeight = 400;
+	    a_canvas.width = tWidth * tScale;
+	    a_canvas.height = tHeight * tScale;	*/
+			$('#userBtn').bind('click',function(){
+				$('#userFile').click();
+			});
+			//文件改变后开始预览
+			$('#userFile').bind('onchange',function(e){
+					//userImgFile = e.files[0];
+					//alert(userImgFile);
+					//hechen();
+			});
+			hechen();
+	});
+
+	function changeFile(e){
+		userImgFile = e.files[0];
+		hechen();
+	}
+
+	function hechen(){
+			var mainCtx = getCanvasContext('main');
+			var maxWidth = mainCtx.width;
+			var maxHeight = mainCtx.height;
+			mainCtx.clearRect(0,0,1000,1000);
+			//因为没法直接读取本地图片 所以做了这部操作
+			var starSelectImg = $('#starSelect').val();
+			$('#starImg').attr('src',starSelectImg);
+			var starImg = new Image();
+			starImg.src=$('#starImg').attr('src');
+			
+			starImg.onload=function(){
+				//先把明星图片绘制在这里
+				mainCtx.drawImage(starImg,0,0);
+
+
+				//读取用户的文本
+				if($('#desc').val()){
+					mainCtx.font = "40px Arial";
+					//设置字体填充颜色
+					mainCtx.fillStyle = "blue";
+					//从坐标点(50,50)开始绘制文字
+					mainCtx.fillText($('#desc').val(),50,50);
+				}
+			};
+			
+
+			//读取用户选择的图片
+			if(userImgFile){
+				var reader=new FileReader();
+				reader.onload=function(){
+					// 通过 reader.result 来访问生成的 DataURL
+					console.log('result:'+reader.result);
+					var image=new Image();
+					image.src=reader.result;
+					mainCtx.drawImage(image,80,120,100,100);
+				};
+				reader.readAsDataURL(userImgFile);
+			}
+
+			
+	}
+
+	function getCanvasContext(id){
+		
+	  return document.getElementById(id).getContext("2d");
+	}
+
+	function setWidthHeight(img,maxWidth,maxHeight){
+		var imgWidth = img.width;
+		var imgHeight = img.height;
+		if(imgWidth <= maxWidth &&imgHeight <= maxHeight){
+			
+		}
+	}
+	</script>
+</html> 

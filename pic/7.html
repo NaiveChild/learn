@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>鼠标滚轮放大图片</title>
+	<link rel="stylesheet" href="">
+	<style>
+		img{  
+            border:2px solid #000000;  
+            margin:10px;  
+        }  
+          
+        body{  
+            font-family:Verdana,Arial,sans-serif;  
+            font-size:80%;  
+            margin:0;  
+            padding:0;  
+        }  
+          
+        div.body{margin:10pt}  
+	</style>
+	<script src="jquery-1.10.2.js"></script>
+	<script type="text/javascript">  
+        $(function(){  
+            $(".body img").each(function(){  
+                if($.browser.msie){  
+                    $(this).bind("mousewheel",function(e){  
+                        var e=e||event,v=e.wheelDelta||e.detail;  
+                        if(v>0)  
+                            resizeImg(this,false);  
+                            else  
+                                resizeImg(this,true);  
+                           window.event.returnValue=false;  
+                           return false;  
+                    })  
+                }else{  
+                    $(this).bind("DOMMouseScroll",function(event){  
+                        if(event.detail<0)  
+                            resizeImg(this,false);  
+                            else  
+                                resizeImg(this,true);  
+                            event.preventDefault();  
+                    })  
+                }  
+            });  
+              
+            function resizeImg(node,isSmall){  
+                if(!isSmall){  
+                    $(node).height($(node).height()*1.2);  
+                }else{  
+                    $(node).height($(node).height()*0.8);  
+                }  
+            }  
+        });  
+    </script>  
+</head>
+<body>
+	<div class="body">  
+	    <img src="1.jpg" alt="点击图片，划动鼠标滚轮放大缩小图片" />  
+	    <img src="2.jpg" alt="点击图片，划动鼠标滚轮放大缩小图片" />  
+	</div>  
+</body>
+</html>

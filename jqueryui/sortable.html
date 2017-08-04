@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>排序</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		#sortable{
+			list-style: none;
+			width: 60%;
+		}
+		#sortable li{
+			margin-top: 4px;
+			padding-left: 2px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+
+	<ul id="sortable">
+		<li class="ui-state-default">item1</li>
+		<li class="ui-state-default">item2</li>
+		<li class="ui-state-default">item3</li>
+		<li class="ui-state-default">item4</li>
+		<li class="ui-state-default">item5</li>
+		<li class="ui-state-default">item6</li>
+	</ul>
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			
+			$("#sortable").sortable();
+			$("#sortable").disableSelection();
+    
+		});
+
+	</script>
+</body>
+</html>

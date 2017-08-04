@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="jquery-1.10.2.js"></script>
+</head>
+<body>
+	<img id="starImg" style="display: none">
+	<canvas id="main" width="400" height="400" style="border:1px solid #d3d3d3;" ></canvas>
+	<input type="text" id="desc" onBlur="hechen()" value="测试文本"/>
+	<button type="" onclick="saveImageInfo()">test</button>
+
+	<script>
+	var userImgFile= '1.jpg';
+	$(function(){
+
+		hechen();
+
+	});
+
+	function hechen(){
+			var mainCtx = getCanvasContext('main');
+			var maxWidth = mainCtx.width;
+			var maxHeight = mainCtx.height;
+			mainCtx.clearRect(0,0,5,1000);
+			
+			$('#starImg').attr('src',userImgFile);
+			var starImg = new Image();
+			starImg.src=$('#starImg').attr('src');
+			
+			starImg.onload=function(){
+				//先把明星图片绘制在这里
+				mainCtx.drawImage(starImg,0,0);
+
+
+				//读取用户的文本
+				if($('#desc').val()){
+					mainCtx.font = "40px Arial";
+					//设置字体填充颜色
+					mainCtx.fillStyle = "blue";
+					//从坐标点(50,50)开始绘制文字
+					mainCtx.fillText($('#desc').val(),50,50);
+				}
+			};			
+	}
+
+	function getCanvasContext(id){
+		
+	  return document.getElementById(id).getContext("2d");
+	}
+
+	function saveImageInfo () { 
+		var myCanvas = document.getElementById("main"); 
+// here is the most important part because if you dont replace you will get a DOM 18 exception. 
+// var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png"); 
+var image = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
+window.location.href=image; // it will save locally 
+	} 
+	</script>
+</body>
+</html>

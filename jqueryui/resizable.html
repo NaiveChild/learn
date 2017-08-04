@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>缩放</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		#resizable{
+			width: 200px;
+			height: 200px;
+			border:1px solid #eee;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="resizable">
+		
+	</div>
+
+	<textarea name="" id="text"></textarea>
+
+
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			
+			$("#resizable").resizable();
+			$("#text").on('blur',function(){
+				alert($("#text").val());
+			})
+    
+		});
+
+	</script>
+</body>
+</html>

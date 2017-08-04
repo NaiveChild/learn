@@ -1,0 +1,175 @@
+<html>
+
+<head>
+<title></title>
+<meta content="text/html; charset=gb2312" http-equiv="Content-Type">
+<style> 
+#testDiv{ 
+ /*position:absolute;*/
+ width:100%;
+ height:200;
+ overflow: hidden; 
+ z-index: 2; 
+ border: 1px outset ; 
+}
+
+#innerNice{
+ height: 200; 
+ overflow: auto; 
+ width: 100%; 
+ border: 1px inset ; 
+}
+
+</style>
+
+<SCRIPT language=javascript>
+/////////////////////////////////////////////////////////////////////////
+// Generic Resize                                     //
+//                                                                     //
+// You may use this script as long as this disclaimer is remained.     //
+               //
+//                                                                     //
+// How to use this script!                                             //
+// Link the script in the HEAD and create a container (DIV, preferable //
+// absolute positioned) and add the class="resizeMe" to it.            //
+/////////////////////////////////////////////////////////////////////////
+
+var leftObject = null; //This gets a value as soon as a resize start
+
+function resizeObject() {
+ this.el        = null; //pointer to the object
+ this.dir    = "";      //type of current resize (n, s, e, w, ne, nw, se, sw)
+ this.grabx = null;     //Some useful values
+ this.graby = null;
+ this.width = null;
+ this.height = null;
+ this.left = null;
+ this.top = null;
+}
+ 
+
+//Find out what kind of resize! Return a string inlcluding the directions
+function getDirection(el) {
+ var xPos, yPos, offset, dir;
+ dir = "";
+
+ xPos = window.event.offsetX;
+ yPos = window.event.offsetY;
+
+ offset = 8; //The distance from the edge in pixels
+
+ if (yPos<offset) dir += "n";
+ else if (yPos > el.offsetHeight-offset) dir += "s";
+ if (xPos<offset) dir += "w";
+ else if (xPos > el.offsetWidth-offset) dir += "e";
+
+ return dir;
+}
+
+function doDown() {
+ var el = getReal(event.srcElement, "className", "resizeMe");
+ var er = getReal(event.srcElement, "className", "resizeRight");
+
+ if (el == null) {
+  theobject = null;
+  return;
+ }  
+
+ dir = getDirection(el);
+ if (dir == "") return;
+
+ leftObject = new resizeObject();
+  
+ leftObject.el = el;
+ leftObject.dir = dir;
+
+ leftObject.grabx = window.event.clientX;
+ leftObject.graby = window.event.clientY;
+ leftObject.width = el.offsetWidth;
+ leftObject.height = el.offsetHeight;
+ leftObject.left = el.offsetLeft;
+ leftObject.top = el.offsetTop;
+
+ window.event.returnValue = false;
+ window.event.cancelBubble = true;
+}
+
+function doUp() {
+ if (leftObject != null) {
+  leftObject = null;
+ }
+}
+
+function doMove() {
+ var el, er, xPos, yPos, str, xMin, yMin;
+ xMin = 200; //The smallest width possible
+ yMin = 200; //             height
+
+ el = getReal(event.srcElement, "className", "resizeMe");
+ er = getReal(event.srcElement, "className", "resizeRight");
+
+ if (el.className == "resizeMe") {
+  str = getDirection(el);
+ //Fix the cursor 
+  if (str == "") str = "default";
+  else str += "-resize";
+  el.style.cursor = str;
+ }
+ 
+//Dragging starts here
+ if(leftObject != null) {
+  if (dir.indexOf("e") != -1)
+   leftObject.el.style.width = Math.max(xMin, leftObject.width + window.event.clientX - leftObject.grabx) + "px";
+ 
+  if (dir.indexOf("s") != -1)
+   leftObject.el.style.height = Math.max(yMin, leftObject.height + window.event.clientY - leftObject.graby) + "px";
+
+  if (dir.indexOf("w") != -1) {
+   leftObject.el.style.left = Math.min(leftObject.left + window.event.clientX - leftObject.grabx, leftObject.left + leftObject.width - xMin) + "px";
+   leftObject.el.style.width = Math.max(xMin, leftObject.width - window.event.clientX + leftObject.grabx) + "px";
+  }
+  if (dir.indexOf("n") != -1) {
+   leftObject.el.style.top = Math.min(leftObject.top + window.event.clientY - leftObject.graby, leftObject.top + leftObject.height - yMin) + "px";
+   leftObject.el.style.height = Math.max(yMin, leftObject.height - window.event.clientY + leftObject.graby) + "px";
+  }
+  
+  window.event.returnValue = false;
+  window.event.cancelBubble = true;
+ } 
+}
+
+
+function getReal(el, type, value) {
+ temp = el;
+ while ((temp != null) && (temp.tagName != "BODY")) {
+  if (eval("temp." + type) == value) {
+   el = temp;
+   return el;
+  }
+  temp = temp.parentElement;
+ }
+ return el;
+}
+
+document.onmousedown = doDown;
+document.onmouseup   = doUp;
+document.onmousemove = doMove;
+</SCRIPT>
+
+ 
+
+<!-- <meta content="Microsoft FrontPage 4.0" name="GENERATOR"> -->
+<!-- <meta name="ProgId" content="FrontPage.Editor.Document"> -->
+</head>
+
+<body>
+
+ <div class="resizeMe" id="testDiv" >
+  <div id="innerNice" style="background-color:gray">
+      border
+   </div>
+   <p>1321423</p>
+  </div>
+
+</body>
+</html> 

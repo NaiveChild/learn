@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		/*#h1>div{
+			color: #fff;
+			background-color: pink;
+		}*/
+
+		div{
+			width: 80px;
+			height: 80px;
+			border: 1px solid #ccc;
+			border-radius: 20px;
+			background: url(ab.jpg) left 20%;
+		}
+	</style>
+	<script src="jquery-1.10.2.js"></script>
+	<script>
+		$(function(){
+			$("#btn").on('click',function(){
+				alert('点击成功');
+			})
+		})
+
+		var d=function(){
+			alert('d');
+		}
+		function a(callback){
+			d();
+			callback('a');
+			alert('e');
+		}
+		function b(c){
+			alert(c);
+			alert('b');
+		}
+		//a(b);
+		//d,a,b,e
+
+		var arr=[1,1];
+		function fn(index){
+			if(index<3){
+				alert(1);
+			}else{
+				for(var i=2;i<index;i++){
+					arr[arr.length]=arr[i-1]+arr[i-2];
+				}
+				
+				alert(arr[index-1]);
+			}
+			
+		}
+		fn(3);
+	</script>
+
+</head>
+<body>
+	<button id="btn">点我</button>
+	<!-- <div id="h1">
+		<div>
+			dsjajk
+		</div>
+	</div> -->
+	<div>
+		
+	</div>
+</body>
+</html>

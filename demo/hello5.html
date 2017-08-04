@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>hello5</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+	<!-- <div id="example"></div> -->
+	<script type="text/babel">
+		var NoteList=React.createClass({
+			render:function(){
+				return (
+					<ol>
+					{
+						React.Children.map(this.props.children,function(child){
+							return <li>{child}</li>;
+						})
+					}
+					</ol>
+				);
+			}
+		})
+		ReactDOM.render(
+           <NoteList>
+           		<span>hello</span>
+           		<span>world</span>
+           </NoteList>,
+           document.body
+		);
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>对话框</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="dialog">
+		<p>你是不是喜欢我？</p>
+		<button id="yes">是的</button>
+		<button id="no">不是</button>
+	</div>
+
+
+
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			$("#dialog").dialog();
+			$("button").click(function(){
+				alert('关闭窗口也改变不了你喜欢我的事实');
+			});
+			$("#no").hover(function(){
+				$("#no").text('是的');
+				$("#yes").text('不是');
+			});
+			$("#yes").hover(function(){
+				$("#no").text('不是');
+				$("#yes").text('是的');
+			});
+			
+		});
+
+	</script>
+</body>
+</html>

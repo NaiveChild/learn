@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>自动补全</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		.ui-menu-item{
+			border-top: #eee;
+		}
+		.ui-menu-item-wrapper:hover{
+			background-color: pink;
+			border-color: #eee;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="ui-widget">
+		<label for="tags">标签：</label>
+		<input type="text" id="tags">
+	</div>
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			var source=[
+				"ActionScript",
+			    "AppleScript",
+			    "Asp",
+			    "BASIC",
+			    "C",
+			    "C++",
+			    "Clojure",
+			    "COBOL",
+			    "ColdFusion",
+			    "Erlang",
+			    "Fortran",
+			    "Groovy",
+			    "Haskell",
+			    "Java",
+			    "JavaScript",
+			    "Lisp",
+			    "Perl",
+			    "PHP",
+			    "Python",
+			    "Ruby",
+			    "Scala",
+      			"Scheme"
+      		];
+			$("#tags").autocomplete({
+				source:source
+			})
+    
+		});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>开始使用Layui</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <style>
+  	
+  </style>
+</head>
+<body>
+ 
+	<div class="layui-bg-red">
+		
+	</div>
+
+	<div class="layui-tab">
+		<ul class="layui-tab-title">
+			<li class="layui-this">标题一</li>
+		  	<li>标题二</li>
+		  	<li>标题三</li>
+		</ul>
+		<div class="layui-tab-content">
+		  	<div class="layui-tab-item layui-show">内容1</div>
+		  	<div class="layui-tab-item">内容2</div>
+		  	<div class="layui-tab-item">内容3</div>
+		</div>
+	</div>
+ 	
+	<script src="layui/layui.js"></script>
+	<script>
+	 
+		//一般直接写在一个js文件中
+		// layui.use(['layer', 'form'], function(){
+		//   var layer = layui.layer
+		//   ,form = layui.form();
+		  
+		//   layer.msg('Hello World');
+		// });
+
+		layui.config({
+			dir:'layui/',
+			version:false,
+			debug:false,
+		  	base: 'js/modules/' //你的模块目录
+		}).use('index'); //加载入口
+
+		layui.data('test', {
+		  key: 'nickname'
+		  ,value: '贤心'
+		});
+
+		var localTest = layui.data('test');
+		console.log(localTest.nickname); //获得“贤心”
+
+	</script> 
+  
+</body>
+</html>

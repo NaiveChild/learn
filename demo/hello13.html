@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>hello13</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+	<script src="jquery-1.10.2.js"></script>
+</head>
+<body>
+	<!-- <div id="example"></div> -->
+	<script type="text/babel">
+		var RepoList=React.createClass({
+			getInitialState:function(){
+				return {loading:true,error:null,data:null};
+			},
+
+			componentDidMount(){
+				this.props.promise.then(
+					value => this.setState({loading:false,data:value}),
+					error => this.setState({loading:false,error:error})
+				);
+			},
+
+			render:function(){
+				if(this.state.loading){
+					return <span>loading....</span>;
+				}else if(this.state.error!==null){
+					return <span>error:{this.state.error.message}</span>;
+				}else{
+					var repos=this.state.data.items;
+					var repoList=repos.map(function(repo){
+						return (
+							<li>
+								<a href={repo.html_url} > {repo.name}> </a>({repo.stargazers_count}stars)<br/>{repo.description}
+							</li>
+						);
+					})
+
+					return (
+						<main>
+							<h1>most popular javascript projects in github</h1>
+							<ol>
+								{repoList}
+							</ol>
+						</main>
+					)
+				}
+			}
+		})
+
+		ReactDOM.render(
+			<RepoList promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}/>,
+			document.body
+		)
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>拖动</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		#content{
+			width: 100%;
+			position: relative;
+		}
+		#main-div{
+			width: 100%;
+			background-color: #ccc;
+		}
+		#bottom-splitter{
+			position: absolute;
+		    bottom: 0;
+		    left: 0;
+		    height: 4px;
+		    z-index: 10;
+		    pointer-events: auto;
+		    width: 100%;
+		    margin-bottom: -2px;
+		}
+		#bottom-splitter:hover {
+	        background-color: #3BAFDA;
+	        cursor: s-resize;
+	    }
+	</style>
+</head>
+<body style="height: 800px;">
+
+	<div id="content">
+		<div id="main-div" style="height: 400px;">
+			
+		</div>
+		<div id="bottom-splitter">
+			
+		</div>
+	</div>	
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		
+		    var lastY;
+		    $('#bottom-splitter').draggable({
+		        cursor: "s-resize",
+		        axis: 'y',
+		        distance: 10,
+		        // containment: '#content',//不能超过content的高度
+		        containment: 'body',//不能超过body的高度
+		        scorll: false,
+		        start: function (event, ui) {
+		            $('#bottom-splitter').addClass('btn-info light');
+		            lastY = ui.position.top;
+		        },
+		        drag: function (event, ui) {
+		            var deltaY = ui.position.top - lastY;
+		            lastY = ui.position.top;
+		            var newHeight = $('#main-div').height() + deltaY;
+		            if (newHeight < 150 || newHeight > 600 ) {
+		                $('#bottom-splitter').removeClass('btn-info light');
+		                event.preventDefault();
+		                return;
+		            }
+		            
+		            $('#main-div').height(newHeight);
+		        },
+		        stop: function (event, ui) {
+		        	console.log(222);
+		            var deltaY = ui.position.top - lastY;
+		            lastY = ui.position.top;
+		            var newHeight = $('#main-div').height() + deltaY;
+		            $('#main-div').height(newHeight);
+
+		            $('#bottom-splitter').removeClass('btn-info light').css({
+		                top: 'auto',
+		                bottom: 0
+		            });
+		        }
+		    });
+		
+
+	</script>
+</body>
+</html>

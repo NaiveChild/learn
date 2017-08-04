@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>折叠面板</title>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+	<style>
+		.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+			background:pink;
+			border:1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="accordion">
+		<h3>1</h3>
+		<div>
+			<p>abc</p>
+		</div>
+		<h3>2</h3>
+		<div>
+			<p>abc</p>
+		</div>
+		<h3>3</h3>
+		<div>
+			<p>abc</p>
+		</div>
+	</div>	
+
+	<script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			
+			$("#accordion").accordion();
+    
+		});
+
+	</script>
+</body>
+</html>
