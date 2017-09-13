@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>swipe</title>
+    <script type="text/javascript">
+    (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth <= 320) {
+                    docEl.style.fontSize = '42.666666666px';
+                } else if (clientWidth >= 750) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+        console.log(111)
+    })(document, window);
+    </script>
+    <link rel="stylesheet" href="css/swiper.min.css" />
+    <style>
+    *{
+        padding:0;
+        margin:0;
+    }
+    #index_banner {
+        width: 7.5rem;
+        height: 3.35rem;
+        position: relative;
+    }
+    
+    #index_banner .swiper-wrapper {
+        width: 7.5rem;
+        height: 3.35rem;
+    }
+    
+    #index_banner .swiper-slide {
+        width: 7.5rem;
+        height: 3.35rem;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    
+    #index_banner .swiper-slide img {
+        width: 7.5rem;
+        height: 3.35rem;
+    }
+    </style>
+    
+</head>
+
+<body>
+    <div id='index_banner' class="swiper-container">
+        <div class="swiper-wrapper" id="swiper_Topic">
+        <!--     <div class="swiper-slide"><img src="images/hot.png"></div>
+            <div class="swiper-slide"><img src="images/hot.png"></div>
+            <div class="swiper-slide"><img src="images/hot.png"></div> -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <script src="js/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script>
+    function GetTopic() {
+        //获取专题
+        document.getElementById("swiper_Topic").innerHTML = "";
+        $.ajax({
+            url: '//api.zhids.cn/api/generally/topic',
+            type: 'GET',
+            dataType: 'json',
+            async: false,
+            success: function(json) {
+                SwiperUrls = new Array(json.items.length);
+                $.each(json.items, function(index, item) {
+                    document.getElementById("swiper_Topic").innerHTML += '<div class="swiper-slide" ><img src="' + item.cover + '"></div>';
+                });
+
+
+                var swiper = new Swiper('#index_banner', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    centeredSlides: true,
+                    autoplay: 2500,
+                    autoplayDisableOnInteraction: false
+                });
+
+                console.log(222)
+            },
+            error: function() {}
+        });
+
+
+    }
+
+    $(function(){
+        GetTopic();
+    })
+
+    
+    </script>
+</body>
+
+</html>

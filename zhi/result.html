@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="wap-font-scale" content="no">
+<title>result</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/defult.js"></script>
+<script src="js/swiper.js"></script>
+<link rel="stylesheet" type="text/css" href="js/swiper.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/zxb.css">
+<script type="text/javascript">
+            new function (){
+               var _self = this;
+               _self.width = 640;//设置默认最大宽度
+               _self.fontSize = 100;//默认字体大小
+               _self.widthProportion = function(){var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;return p>1?1:p<0.5?0.5:p;};
+               _self.changePage = function(){
+                   document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+               }
+               _self.changePage();
+               window.addEventListener('resize',function(){_self.changePage();},false);
+            };
+</script>
+</head>
+<body>
+<section class="container"> 
+  	<section class="search-box">
+    	<div class="search-inp">
+        	<div class="search-pic"></div>
+        	<input type="text" />
+            <div class="search-btn"></div>
+            </div>
+        <div class="cancel">取消</div>
+    </section>
+    <div class="search-history">
+    	<li>搜索历史</li>
+        <li>清 除</li>
+    </div>
+    <article class="search-data">
+    	<div class="data-box">
+            <div>
+                <p class="data-title">#"瑞"不可挡#没人能拥有百达翡丽，只百达翡丽，只不百达翡丽，只不不过为...</p>
+                <p class="data-time"><span></span><span>2017-05-23</span></p>
+            </div>
+            <div class="data-pic"></div>
+        </div>
+    </article>
+    <article class="search-data">
+    	<div class="data-box">
+            <div>
+                <p class="data-title">#"瑞"不可挡#没人能拥有百达翡丽，只百达翡丽，只不百达翡丽，只不不过为...</p>
+                <p class="data-time"><span></span><span>2017-05-23</span></p>
+            </div>
+            <div class="data-pic"></div>
+        </div>
+    </article>
+    <article class="search-data">
+    	<div class="data-box">
+            <div>
+                <p class="data-title">#"瑞"不可挡#没人能拥有百达翡丽，只百达翡丽，只不百达翡丽，只不不过为...</p>
+                <p class="data-time"><span></span><span>2017-05-23</span></p>
+            </div>
+            <div class="data-pic"></div>
+        </div>
+    </article>
+</section>
+<footer>
+  <article class="bootom-layout"></article>
+</footer>
+</body>
+</html>

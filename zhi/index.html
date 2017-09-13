@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="wap-font-scale" content="no">
+<title>index</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/defult.js"></script>
+<script src="js/swiper.js"></script>
+<script src="js/html5media.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/swiper.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/zxb.css">
+<script type="text/javascript">
+            new function (){
+               var _self = this;
+               _self.width = 640;//设置默认最大宽度
+               _self.fontSize = 100;//默认字体大小
+               _self.widthProportion = function(){var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;return p>1?1:p<0.5?0.5:p;};
+               _self.changePage = function(){
+                   document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+               }
+               _self.changePage();
+               window.addEventListener('resize',function(){_self.changePage();},false);
+            };
+			
+
+</script>
+<script>
+
+</script>
+</head>
+<body>
+<div class="index-search-box" style=" display:none">
+	<ul>
+	<li></li>
+    <li>输入关键词</li>
+    </ul>
+</div>
+<section class="container"> 
+  <!--轮播图开始-->
+  <section class="swiper_layout">
+    <div class="swiper-container" ><!--swiper容器[可以随意更改该容器的样式-->
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/banner.png"></div>
+        <div class="swiper-slide"><img src="images/banner.png"></div>
+        <div class="swiper-slide"><img src="images/banner.png"></div>
+        <div class="swiper-slide"><img src="images/banner.png"></div>
+        <div class="swiper-slide"><img src="images/banner.png"></div>
+        <div class="swiper-slide"><img src="images/banner.png"></div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  <script language="javascript"> 
+		var mySwiper = new Swiper('.swiper-container',{
+		pagination : '.swiper-pagination',
+		effect : 'coverflow',
+		loop:true,
+		slidesPerView: 3,
+		autoplay:3000,/*每隔3秒自动播放*/
+		autoplayDisableOnInteraction : false,
+		centeredSlides: true,
+		coverflow: {
+            rotate: 30,
+            stretch: 0,
+            depth: 60,
+            modifier:2 ,
+
+        }	,
+})
+</script>
+  <section class="contenct-btn">
+    <div>
+      <p></p>
+      <p>时尚资讯</p>
+    </div>
+    <div>
+      <p></p>
+      <p>哆度测试</p>
+    </div>
+    <div>
+      <p></p>
+      <p>鉴估学堂</p>
+    </div>
+    <div>
+      <p></p>
+      <p>养护学堂</p>
+    </div>
+  </section>
+  <!--列表开始-->
+  <section>
+    <div class="list-layout">
+      <p>Cline 赛琳囧包  包包控们看过来，奉上伦敦奉上伦敦</p>
+      <div></div>
+    </div>
+  
+    <div class="list-layout">
+      <p>Cline 赛琳囧包  包包控们看过来，奉上伦敦奉上伦敦</p>
+        <!--视频--><div><li class="play"></li></div>
+    </div>
+    <div class="list-layout">
+      <p>Cline 赛琳囧包  包包控们看过来，奉上伦敦奉上伦敦</p>
+      <div></div>
+    </div>
+   <div class="list-layout">
+      <p>Cline 赛琳囧包  包包控们看过来，奉上伦敦奉上伦敦</p>
+      <div></div>
+    </div>
+    <div class="list-layout">
+      <p class="video-title">Cline 赛琳囧包  包包控们看过来，奉上伦敦奉上伦敦</p>
+      <video  webkit-playsinline="true" controls  autoplay src="http://gslb.miaopai.com/stream/hVM0QajzLFtl2d-pl3Ig9tdXDZDxGryM.mp4?ssig=187e6575a1a2eac0215f1851fb40ac04&time_stamp=1495874475298&cookie_id=5925371d5a9ab&vend=1&os=3&partner=1&platform=2&cookie_id=&refer=miaopai&scid=hVM0QajzLFtl2d-pl3Ig9tdXDZDxGryM" ></video>
+    </div>
+   
+  </section>
+</section>
+<script>
+	
+</script>
+<footer>
+  <article class="bootom-layout"></article>
+</footer>
+</body>
+</html>

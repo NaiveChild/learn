@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="wap-font-scale" content="no">
+<title>咨询详情页</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/defult.js"></script>
+<script src="js/swiper.js"></script>
+<link rel="stylesheet" type="text/css" href="js/swiper.css">
+<link rel="stylesheet" type="text/css" href="css/public.css">
+<link rel="stylesheet" type="text/css" href="css/zxb.css">
+<script type="text/javascript">
+            new function (){
+               var _self = this;
+               _self.width = 640;//设置默认最大宽度
+               _self.fontSize = 100;//默认字体大小
+               _self.widthProportion = function(){var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;return p>1?1:p<0.5?0.5:p;};
+               _self.changePage = function(){
+                   document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+               }
+               _self.changePage();
+               window.addEventListener('resize',function(){_self.changePage();},false);
+            };
+</script>
+</head>
+<body>
+<section class="container"> 
+	<section class="deatail-layout">
+    	<h3>[百达翡丽源邸开幕纪念特别时计：“火龙”怀表] </h3>
+        <div class="time-see">
+        	<li>2017-05-21 08:06</li>
+            <li><span></span>17</li>
+        </div>
+<!--article-->        
+        <div></div>
+<!--article-->           
+    </section>
+    <section class="datail-bg">
+    	<div></div>
+        <div>值哆少编辑团</div>
+        <div><span>较真姐</span></div>
+        <div></div>
+    </section>
+    <section class="all-say">
+    	<h2><p></p>大家说 (212)</h2>
+        <article class="comment-layout">
+        	<div class="contect-m">
+            	<div class="top">
+                	<div></div>
+                    <div class="p-scond">
+                    	<p><span class="person-name">希伯来</span><span style="display:none" class="person_pic"></span></p>
+                        <p><span>2016-10-09</span><span>举报</span><span><em class="like-gary"></em>11</span></p>
+                    </div>
+                </div>
+                <div class="mid-article">
+                	UI设计师&插画师，与中国银行、北京电视台等都合作，项目包含金融APP设计，插画，绘本，动画人物形象设计等等。
+                </div>
+                <div class="bottom-btn">
+                	<li><span class="msg"></span>私信</li>
+                    <li>|</li>
+                    <li><span class="replay"></span>回复</li>
+                </div>
+            </div>
+        </article>
+        <article class="comment-layout">
+        	<div class="contect-m">
+            	<div class="top">
+                	<div></div>
+                    <div class="p-scond">
+                    	<p><span class="person-name">希伯来</span><span class="person_pic"></span></p>
+                        <p><span>2016-10-09</span><span>举报</span><span><em class="like-red"></em>11</span></p>
+                    </div>
+                </div>
+                <div class="mid-article">
+                	UI设计师&插画师，与中国银行、北京电视台等都合作，项目包含金融APP设计，插画，绘本，动画人物形象设计等等。
+                </div>
+                <div class="bottom-btn">
+                	<li><span class="msg"></span>私信</li>
+                    <li>|</li>
+                    <li><span class="replay"></span>回复</li>
+                </div>
+            </div>
+        </article>
+    </section>
+<!--底部浮层-->
+	<div class="bottom_layer">
+    	<li><span class="zan-pic"></span><span>赞</span></li>
+        <li><span class="comment-pic"></span><span>评论</span></li>
+        <li><span class="sc-pic"></span><span>收藏</span></li>
+    </div>
+<!--底部浮层-->    
+</section>
+
+</body>
+</html>
